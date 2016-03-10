@@ -46,9 +46,10 @@ func (b *FrameRingBuf) TwoContig(makeCopy bool) (first []*tm.Frame, second []*tm
 }
 
 // RingReadFrames reads the next len(p) *tm.Frame
-// pointers from the buffer into p, or until the buffer is drained. The return
-// value n is the number of pointers read. If the buffer has no data
-// to return, err is io.EOF (unless len(p) is zero); otherwise it is nil.
+// pointers from the internal ring into p, or until the ring
+// is drained. The return value n is the number of pointers
+// read. If the buffer has no data to return, err is io.EOF
+// (unless len(p) is zero); otherwise it is nil.
 func (b *FrameRingBuf) RingReadFrames(p []*tm.Frame) (n int, err error) {
 	return b.readAndMaybeAdvance(p, true)
 }
