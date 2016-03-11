@@ -42,7 +42,7 @@ func (b *FrameRingBuf) TwoContig(makeCopy bool) (first []*tm.Frame, second []*tm
 		return b.A[b.Beg:(b.Beg + b.Readable)], second
 	}
 
-	return b.A[b.Beg:(b.Beg + b.Readable)], b.A[0:(extent % b.N)]
+	return b.A[b.Beg:b.N], b.A[0:(extent % b.N)]
 }
 
 // RingReadFrames reads the next len(p) *tm.Frame

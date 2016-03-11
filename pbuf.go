@@ -39,7 +39,7 @@ func (b *PointerRingBuf) TwoContig(makeCopy bool) (first []interface{}, second [
 		return b.A[b.Beg:(b.Beg + b.Readable)], second
 	}
 
-	return b.A[b.Beg:(b.Beg + b.Readable)], b.A[0:(extent % b.N)]
+	return b.A[b.Beg:b.N], b.A[0:(extent % b.N)]
 }
 
 // ReadPtrs():
